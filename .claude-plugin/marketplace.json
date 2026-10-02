@@ -1,0 +1,27 @@
+{
+  "name": "phone-sms",
+  "description": "Read and send SMS from Claude Code through your own Android phone, over KDE Connect on your local network.",
+  "owner": {
+    "name": "h-3303",
+    "url": "https://github.com/h-3303"
+  },
+  "metadata": {
+    "description": "Add with: /plugin marketplace add h-3303/phone-sms"
+  },
+  "plugins": [
+    {
+      "name": "phone-sms",
+      "description": "MCP server with four tools (list_threads, read_thread, find_contact, send_sms) over the local KDE Connect daemon. Needs Linux, KDE Connect paired with an Android phone, and uv. Sends only after you approve recipient and text.",
+      "version": "0.1.0",
+      "source": "./plugin",
+      "homepage": "https://phone-sms.vercel.app",
+      "repository": "https://github.com/h-3303/phone-sms",
+      "license": "GPL-3.0-or-later",
+      "author": {
+        "name": "h-3303"
+      },
+      "category": "productivity",
+      "tags": ["sms", "android", "kde-connect", "messaging", "phone", "mcp", "linux"]
+    }
+  ]
+}

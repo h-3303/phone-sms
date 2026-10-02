@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "phone-sms",
+  "displayName": "phone-sms",
+  "version": "0.1.0",
+  "description": "Read and send SMS through your own Android phone over KDE Connect, locally. Four MCP tools: list_threads, read_thread, find_contact, send_sms.",
+  "author": {
+    "name": "h-3303",
+    "url": "https://github.com/h-3303"
+  },
+  "homepage": "https://phone-sms.vercel.app",
+  "repository": "https://github.com/h-3303/phone-sms",
+  "license": "GPL-3.0-or-later",
+  "keywords": ["sms", "android", "kde-connect", "kdeconnect", "messaging", "phone", "mcp", "claude-code", "linux"]
+}

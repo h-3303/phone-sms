@@ -1,11 +1,14 @@
 [project]
 name = "phone-sms"
 version = "0.1.0"
-description = "MCP server: read and send SMS through a phone paired with KDE Connect"
+description = "MCP server: read and send SMS through your own Android phone over KDE Connect"
 readme = "README.md"
 authors = [
     { name = "h-3303", email = "h.p1303@proton.me" }
 ]
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+keywords = ["mcp", "sms", "kde-connect", "android", "claude"]
 requires-python = ">=3.12"
 dependencies = [
     "dbus-next>=0.2.3",
@@ -18,3 +21,7 @@ build-backend = "uv_build"
 
 [project.scripts]
 phone-sms = "phone_sms:main"
+
+[project.urls]
+Homepage = "https://phone-sms.vercel.app"
+Repository = "https://github.com/h-3303/phone-sms"
