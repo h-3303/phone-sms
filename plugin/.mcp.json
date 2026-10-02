@@ -2,7 +2,7 @@
   "mcpServers": {
     "phone-sms": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/h-3303/phone-sms", "phone-sms"]
+      "args": ["phone-sms==0.1.0"]
     }
   }
 }

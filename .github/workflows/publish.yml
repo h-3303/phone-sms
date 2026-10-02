@@ -1,6 +1,7 @@
 # On a published GitHub release: build, publish to PyPI (trusted publishing, no token),
 # then register the new version with the official MCP registry (GitHub OIDC, no token).
-# Bump the version in pyproject.toml, server.json (twice) and plugin manifests first.
+# Bump the version in pyproject.toml, server.json (twice), the plugin manifests and the
+# uvx pin in plugin/.mcp.json first.
 name: publish
 
 on:

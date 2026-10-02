@@ -49,7 +49,7 @@ Check the pairing: `kdeconnect-cli -l` should list your phone as *paired and rea
 **Claude Code, as a plain MCP server:**
 
 ```bash
-claude mcp add --scope user phone-sms -- uvx --from git+https://github.com/h-3303/phone-sms phone-sms
+claude mcp add --scope user phone-sms -- uvx phone-sms
 ```
 
 **Any other MCP client** (Claude Desktop config shape, Cursor, Zed, …):
@@ -59,7 +59,7 @@ claude mcp add --scope user phone-sms -- uvx --from git+https://github.com/h-330
   "mcpServers": {
     "phone-sms": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/h-3303/phone-sms", "phone-sms"]
+      "args": ["phone-sms"]
     }
   }
 }

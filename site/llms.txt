@@ -14,8 +14,8 @@
 ## Install
 
 - Claude Code plugin: `/plugin marketplace add h-3303/phone-sms` then `/plugin install phone-sms@phone-sms`
-- Claude Code MCP: `claude mcp add --scope user phone-sms -- uvx --from git+https://github.com/h-3303/phone-sms phone-sms`
-- Any MCP client: command `uvx`, args `["--from", "git+https://github.com/h-3303/phone-sms", "phone-sms"]`
+- Claude Code MCP: `claude mcp add --scope user phone-sms -- uvx phone-sms`
+- Any MCP client: command `uvx`, args `["phone-sms"]`
 
 Requires Linux with KDE Connect (kdeconnectd), an Android phone with the KDE Connect app paired and its SMS (and Contacts) plugin enabled, and uv. `PHONE_SMS_DEVICE=<id>` pins a device when several are paired.
 
