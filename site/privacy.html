@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>phone-sms · privacy</title>
+<meta name="description" content="What phone-sms does with your messages and contacts: it reads them from your own phone over your local network and keeps nothing.">
+<link rel="canonical" href="https://phone-sms.vercel.app/privacy">
+<link rel="stylesheet" href="dtw.css">
+<style>
+  html { background: var(--dtw-paper-2nd); }
+  body { margin: 0; padding: 28px 16px 56px; color: var(--dtw-toner); }
+  .page { max-width: 720px; margin: 0 auto; }
+  .sheet { padding: 30px 28px 34px; }
+  .stack > * + * { margin-top: 18px; }
+  a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  @media (max-width: 640px) { .sheet { padding: 22px 16px 26px; } }
+</style>
+</head>
+<body>
+<main class="page">
+<div class="dtw-sheet dtw-sheet--paper dtw-xerox sheet stack">
+  <div class="dtw-masthead dtw-masthead--bar" style="transform: rotate(-0.6deg); display: inline-block">
+    <div class="dtw-masthead__title"><a href="/" style="text-decoration:none">phone-sms</a></div>
+    <div class="dtw-masthead__tagline">PRIVACY</div>
+  </div>
+  <h1 class="dtw-headline" style="font-size: 24px">WHAT HAPPENS TO YOUR MESSAGES.</h1>
+  <p class="dtw-body" style="font-size: 13.5px">phone-sms is software you run on your own computer. It has no server, no account and no analytics, and its author receives nothing from it.</p>
+  <p class="dtw-body" style="font-size: 13.5px"><b>What it reads.</b> Your SMS conversations and the contacts your phone shares with KDE Connect, fetched from the KDE Connect daemon on your computer, which gets them from your phone over your local network. It reads them only when the AI client you use calls one of its tools.</p>
+  <p class="dtw-body" style="font-size: 13.5px"><b>Where they go.</b> The text a tool returns goes to the AI client that called it (Claude Code, for example), and from there into that model's context under that client's own privacy terms. phone-sms sends nothing anywhere else.</p>
+  <p class="dtw-body" style="font-size: 13.5px"><b>What it keeps.</b> Nothing. No copies, logs, caches or databases of messages or contacts are written by phone-sms.</p>
+  <p class="dtw-body" style="font-size: 13.5px"><b>Sending.</b> A text is sent from your phone and your number only when the <code>send_sms</code> tool is called, and the server instructs the model to call it only after you have approved the exact recipients and wording.</p>
+  <p class="dtw-body" style="font-size: 13.5px"><b>Questions.</b> Open an issue at <a href="https://github.com/h-3303/phone-sms/issues">github.com/h-3303/phone-sms/issues</a>. The source is public there, so all of the above can be checked.</p>
+  <p class="dtw-typewriter dtw-typewriter--muted" style="font-size: 11px">Last updated 2 October 2026.</p>
+</div>
+</main>
+</body>
+</html>

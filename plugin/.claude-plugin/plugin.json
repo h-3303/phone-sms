@@ -10,6 +10,18 @@
   },
   "homepage": "https://phone-sms.vercel.app",
   "repository": "https://github.com/h-3303/phone-sms",
+  "privacyPolicyUrl": "https://phone-sms.vercel.app/privacy",
+  "supportUrl": "https://github.com/h-3303/phone-sms/issues",
   "license": "GPL-3.0-or-later",
-  "keywords": ["sms", "android", "kde-connect", "kdeconnect", "messaging", "phone", "mcp", "claude-code", "linux"]
+  "keywords": [
+    "sms",
+    "android",
+    "kde-connect",
+    "kdeconnect",
+    "messaging",
+    "phone",
+    "mcp",
+    "claude-code",
+    "linux"
+  ]
 }
