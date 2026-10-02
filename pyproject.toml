@@ -1,0 +1,20 @@
+[project]
+name = "phone-sms"
+version = "0.1.0"
+description = "MCP server: read and send SMS through a phone paired with KDE Connect"
+readme = "README.md"
+authors = [
+    { name = "h-3303", email = "h.p1303@proton.me" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "dbus-next>=0.2.3",
+    "mcp>=2.2.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[project.scripts]
+phone-sms = "phone_sms:main"
