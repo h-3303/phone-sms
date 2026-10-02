@@ -1,0 +1,25 @@
+# phone-sms
+
+> An MCP server that lets Claude, or any MCP client, read and send SMS through the user's own Android phone and number. It talks to the phone over KDE Connect on the local network (the kdeconnectd D-Bus interface org.kde.kdeconnect.device.conversations); no cloud relay, no SMS gateway, no account. Linux. GPL-3.0-or-later.
+
+## Tools
+
+- `list_threads(limit=20, unread_only=false, contact="")`: conversations, newest first, each line starting with the thread id.
+- `read_thread(thread_id, count=20)`: the last messages of one conversation, oldest first.
+- `find_contact(query)`: contacts from the phone (KDE Connect contacts plugin) by name or number fragment.
+- `send_sms(to: list[str], text)`: send, or group-send to several numbers. destructiveHint. Only after the user has approved the exact recipients and text in the conversation.
+
+`send_sms` returns "handed to phone…" when kdeconnectd accepts the request; delivery shows when the message appears in list_threads / read_thread after the phone syncs.
+
+## Install
+
+- Claude Code plugin: `/plugin marketplace add h-3303/phone-sms` then `/plugin install phone-sms@phone-sms`
+- Claude Code MCP: `claude mcp add --scope user phone-sms -- uvx --from git+https://github.com/h-3303/phone-sms phone-sms`
+- Any MCP client: command `uvx`, args `["--from", "git+https://github.com/h-3303/phone-sms", "phone-sms"]`
+
+Requires Linux with KDE Connect (kdeconnectd), an Android phone with the KDE Connect app paired and its SMS (and Contacts) plugin enabled, and uv. `PHONE_SMS_DEVICE=<id>` pins a device when several are paired.
+
+## Links
+
+- Repository: https://github.com/h-3303/phone-sms
+- README: https://github.com/h-3303/phone-sms#readme

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://phone-sms.vercel.app/sitemap.xml

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>phone-sms · your texts, to your agent, over your own Wi-Fi</title>
+<meta name="description" content="An MCP server that lets Claude or any MCP client read and send SMS through your own Android phone and number, over KDE Connect on your local network. No cloud relay, no SMS gateway, no account. Nothing is sent without your yes.">
+<link rel="canonical" href="https://phone-sms.vercel.app/">
+<link rel="alternate" type="text/plain" href="https://phone-sms.vercel.app/llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="phone-sms">
+<meta property="og:url" content="https://phone-sms.vercel.app/">
+<meta property="og:title" content="phone-sms · your texts, to your agent, over your own Wi-Fi">
+<meta property="og:description" content="Read and send SMS from Claude through your own Android phone. KDE Connect · local network · four MCP tools · nothing sent without your yes.">
+<meta property="og:image" content="https://phone-sms.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The phone-sms page: masthead, headline, how a text travels from the agent to the phone.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="phone-sms · your texts, to your agent, over your own Wi-Fi">
+<meta name="twitter:description" content="Read and send SMS from Claude through your own Android phone, over KDE Connect. No cloud relay.">
+<meta name="twitter:image" content="https://phone-sms.vercel.app/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "phone-sms",
+  "url": "https://phone-sms.vercel.app/",
+  "description": "An MCP server that lets Claude or any MCP client read and send SMS through the user's own Android phone, over KDE Connect on the local network.",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "MCP server",
+  "operatingSystem": "Linux",
+  "softwareVersion": "0.1.0",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+  "isAccessibleForFree": true,
+  "codeRepository": "https://github.com/h-3303/phone-sms",
+  "installUrl": "https://github.com/h-3303/phone-sms#install",
+  "softwareRequirements": "KDE Connect (kdeconnectd) paired with an Android phone, uv",
+  "keywords": "mcp, mcp-server, sms, kde-connect, android, claude, claude-code, local-first",
+  "author": { "@type": "Person", "name": "h-3303", "url": "https://github.com/h-3303" }
+}
+</script>
+<link rel="stylesheet" href="dtw.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141412'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-family='serif' font-weight='700' font-size='22' fill='%23e8e5dc'%3Ep%3C/text%3E%3C/svg%3E">
+<style>
+  /* Page furniture only: the system's tokens and classes do the rest. */
+  html { background: var(--dtw-paper-2nd); }
+  body { margin: 0; padding: 28px 16px 56px; color: var(--dtw-toner); }
+  .page { max-width: 720px; margin: 0 auto; }
+  .sheet { padding: 30px 28px 34px; }
+  .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .pre { white-space: pre; overflow-x: auto; margin: 0; font-size: 12px; line-height: 1.55; }
+  a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .dtw-sheet--black a { color: var(--dtw-paper); }
+  .stack > * + * { margin-top: 22px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 22px; align-items: start; }
+  .two > * { min-width: 0; }
+  .black-band { padding: 26px 24px 30px; margin: 30px -28px -34px; }
+  .steps .dtw-x-list__item { font-size: 12.5px; }
+  .steps b { font-weight: 700; letter-spacing: 0.03em; }
+  .tools { font: 400 12px/1.5 var(--dtw-font-typewriter); margin: 0; padding: 0; list-style: none; }
+  .tools li { display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding: 4px 0; border-bottom: 1px solid var(--dtw-grey-2); }
+  .tools code { font: inherit; }
+  .rot-1 { transform: rotate(-0.8deg); } .rot-2 { transform: rotate(0.6deg); } .rot-3 { transform: rotate(-1.2deg); } .rot-4 { transform: rotate(1.1deg); }
+  @media (max-width: 640px) {
+    .sheet { padding: 22px 16px 26px; }
+    .two { grid-template-columns: 1fr; }
+    .black-band { margin: 26px -16px -26px; padding: 22px 16px 26px; }
+    .dtw-masthead__title { font-size: 34px !important; }
+    .tools li { grid-template-columns: 1fr; gap: 2px; }
+    .dtw-plate__spine { display: none; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+<div class="dtw-sheet dtw-sheet--paper dtw-xerox sheet">
+
+  <div class="row">
+    <div class="dtw-masthead dtw-masthead--bar" style="transform: rotate(-0.6deg)">
+      <div class="dtw-masthead__title">phone-sms</div>
+      <div class="dtw-masthead__tagline">SMS · KDE CONNECT · YOUR OWN PHONE · ANY MCP CLIENT</div>
+    </div>
+    <span class="dtw-folio" style="transform: rotate(-4deg); margin-top: 6px">No. 3 · MMXXVI</span>
+  </div>
+
+  <div class="stack" style="margin-top: 26px">
+    <h1 class="dtw-headline" style="font-size: 26px; max-width: 600px">
+      YOUR TEXTS, TO YOUR AGENT. OVER YOUR OWN WI-FI, AND NOWHERE ELSE.
+    </h1>
+
+    <p class="dtw-body" style="font-size: 13.5px; max-width: 600px">
+      <span class="dtw-body__dropcap">A</span>n MCP server that lets Claude, or any client that speaks MCP, read your
+      conversations, look up a contact and send a text, from your own phone and your own number. The phone is reached
+      through KDE Connect, which you may already have paired: the server talks to the KDE Connect daemon on your
+      computer over D-Bus, the daemon talks to the phone across your local network, and the phone sends the message
+      as if you had typed it. No SMS gateway, no relay in somebody's cloud, no second number, no account to open.
+      Four tools, and the one that sends will not be called until you have seen who it goes to and what it says.
+    </p>
+
+    <div class="dtw-ornament dtw-ornament--diamond"><div class="dtw-ornament__line"></div><div class="dtw-ornament__diamond"></div><div class="dtw-ornament__line"></div></div>
+
+    <div class="two">
+      <div>
+        <div class="dtw-bar-heading dtw-bar-heading--typewriter rot-2">HOW A TEXT TRAVELS</div>
+        <div class="dtw-x-list steps" style="margin-top: 14px">
+          <div class="dtw-x-list__item"><span class="dtw-x-list__x">X</span><span><b>ASK.</b> “Text Sam that I'm running late.” The agent calls <code>find_contact</code> and gets the number from the contacts your phone has synced.</span></div>
+          <div class="dtw-x-list__item"><span class="dtw-x-list__x">X</span><span><b>SHOW.</b> It puts the recipient and the exact words in front of you, and waits.</span></div>
+          <div class="dtw-x-list__item"><span class="dtw-x-list__x">X</span><span><b>YES.</b> Only then <code>send_sms</code>. The request goes to <code>kdeconnectd</code> on your machine.</span></div>
+          <div class="dtw-x-list__item"><span class="dtw-x-list__x">X</span><span><b>PHONE.</b> The KDE Connect app on Android receives it over the LAN and sends it through the phone's own SMS.</span></div>
+          <div class="dtw-x-list__item"><span class="dtw-x-list__x">X</span><span><b>CHECK.</b> “Handed to phone” is not delivery. The sent message appears in <code>read_thread</code> once the phone syncs it back, usually within the minute.</span></div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="dtw-plate" style="height: 250px; transform: rotate(0.7deg)">
+          <div class="dtw-plate__fill dtw-hatch dtw-tone" style="background-color: var(--dtw-grey-2); opacity: 0.9"></div>
+          <div class="dtw-plate__label" style="font-size: 10px; background: var(--dtw-paper); inset: 14px; border: 1px solid var(--dtw-toner)">AGENT
+│ MCP · stdio
+▼
+phone-sms
+│ D-Bus
+▼
+kdeconnectd
+│ your LAN
+▼
+KDE CONNECT ON ANDROID
+│
+▼
+SMS, FROM YOUR NUMBER</div>
+          <div class="dtw-plate__spine"><span>FIG. 1 — NO CLOUD IN THE PATH</span></div>
+        </div>
+
+        <div class="dtw-stamp" style="transform: rotate(-3deg)">NO TEXT<br>WITHOUT YOUR YES</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="dtw-bar-heading dtw-bar-heading--serif rot-4">The four tools.</div>
+      <ul class="tools" style="margin-top: 14px">
+        <li><code>list_threads</code><span>conversations, newest first, with the latest message of each; filter by a name, a number fragment, or unread</span></li>
+        <li><code>read_thread</code><span>the last <em>n</em> messages of one conversation, oldest first, names in place of numbers</span></li>
+        <li><code>find_contact</code><span>a name or part of a number against the contacts the phone shares with KDE Connect</span></li>
+        <li><code>send_sms</code><span>one number, or several for a group text; marked destructive, and the server tells the model to wait for your approval of recipient and text</span></li>
+      </ul>
+    </div>
+
+    <div class="dtw-pasted-box rot-3">
+      <div class="dtw-bar-heading dtw-bar-heading--typewriter" style="margin: -4px 0 10px">INSTALL</div>
+<pre class="dtw-typewriter pre">sudo pacman -S --needed kdeconnect uv     # or your distro's packages
+kdeconnect-cli -l                         # phone: paired and reachable?
+
+# Claude Code, as a plugin
+/plugin marketplace add h-3303/phone-sms
+/plugin install phone-sms@phone-sms
+
+# or as a plain MCP server, in any client
+uvx --from git+https://github.com/h-3303/phone-sms phone-sms</pre>
+      <p class="dtw-typewriter dtw-typewriter--muted" style="font-size: 11px; margin-top: 10px">
+        On the phone: the KDE Connect app from F-Droid or Play, paired with the computer, with its <em>SMS</em> plugin
+        on (and <em>Contacts</em>, for names) and Android's SMS permission granted. Plasma is not needed; the daemon
+        runs under GNOME, Hyprland or Sway just the same. With several phones paired,
+        <code>PHONE_SMS_DEVICE</code> picks one.
+      </p>
+    </div>
+
+    <div class="two">
+      <div>
+        <div class="dtw-bar-heading dtw-bar-heading--typewriter rot-1">WHY KDE CONNECT</div>
+        <p class="dtw-body" style="font-size: 13px; margin-top: 14px">
+          The other ways to give an agent your texts all route them through someone: an SMS gateway with its own number,
+          a relay app that forwards your messages to a server, or a script that drives the phone's screen over USB.
+          KDE Connect already has the phone's conversations, keeps them on your network, and sends from the number
+          your friends know. The <code>kdeconnect-sms</code> desktop app uses the very same D-Bus interface; this server
+          is that app's other half, written for a model instead of a window.
+        </p>
+      </div>
+      <div class="stack">
+        <div class="dtw-pasted-box rot-1">
+          <div class="dtw-bar-heading dtw-bar-heading--typewriter" style="margin: -4px 0 10px">BY HAND</div>
+<pre class="dtw-typewriter pre">$ phone-sms threads -n 2
+[56] 2026-10-02 15:54 ← Sam &lt;+14375550142&gt;: see you at 7
+[55] 2026-10-02 14:03 ← +18005550199: Your order shipped.
+
+$ phone-sms contact sam
+Sam: +1-437-555-0142
+
+$ phone-sms send +14375550142 -m "running late"
+handed to phone for sending to Sam &lt;+14375550142&gt;</pre>
+        </div>
+        <div class="dtw-torn-scrap dtw-torn-scrap--v2 dtw-xerox" style="transform: rotate(1.2deg); max-width: 300px">
+          <p class="dtw-typewriter" style="font-size: 11px">The CLI runs the same code paths as the tools, so when something goes wrong you can find out whether it is the model, the server, or the phone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dtw-sheet dtw-sheet--black black-band">
+    <div class="dtw-reversed-panel" style="padding: 0; max-width: 560px">
+      <h2 class="dtw-headline dtw-headline--on-black" style="font-size: 20px">WHAT IT WILL NOT DO.</h2>
+      <p class="dtw-body dtw-body--on-black" style="margin-top: 10px">
+        It will not send a text you have not approved, word for word, to a recipient you have not approved. It will not
+        pass your messages to any server: they go from the phone to your computer and into the model's context, and
+        the server asks the model to quote only what the task needs. It keeps no copy, no log, no database. It needs
+        no number but yours and no account at all.
+      </p>
+      <div class="dtw-reversed-panel__attr">— the server's instructions to the model</div>
+    </div>
+
+    <div class="row" style="margin-top: 26px; flex-wrap: wrap; align-items: center">
+      <div class="dtw-torn-scrap dtw-torn-scrap--v1 dtw-xerox" style="transform: rotate(-0.9deg); max-width: 300px">
+        <p class="dtw-typewriter" style="font-size: 11px">Built and used on a Pixel 7 running GrapheneOS, paired with a CachyOS laptop under Hyprland. Any Android phone KDE Connect supports should do.</p>
+      </div>
+      <div class="dtw-pasted-slip dtw-pasted-slip--hand" style="transform: rotate(-1.6deg); font-size: 30px">your phone, your number, your network</div>
+    </div>
+
+    <p class="dtw-typewriter dtw-typewriter--on-black dtw-typewriter--tracked dtw-typewriter--caps" style="font-size: 10px; margin-top: 30px; text-align: center">
+      <a href="https://github.com/h-3303/phone-sms">github.com/h-3303/phone-sms</a> · <a href="llms.txt">llms.txt</a> · GPL-3.0-or-later
+    </p>
+  </div>
+
+</div>
+</main>
+</body>
+</html>
