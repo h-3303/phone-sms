@@ -10,3 +10,4 @@ wheels/
 .venv
 .vercel
 .env*.local
+.env*
