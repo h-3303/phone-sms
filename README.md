@@ -109,3 +109,7 @@ messages or `conversationLoaded`, not for a quiet gap.
 ## License
 
 GPL-3.0-or-later, like KDE Connect.
+
+---
+
+Built by [Moirai Digital](https://www.moiraidigital.com).
